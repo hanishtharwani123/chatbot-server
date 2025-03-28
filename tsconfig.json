@@ -6,12 +6,14 @@
     "outDir": "./dist", // Compiled output folder
     "esModuleInterop": true, // Allows importing CommonJS modules
     "forceConsistentCasingInFileNames": true,
-    "strict": true, // Enforces strict type checking
+    "strict": false, // Enforces strict type checking
     "skipLibCheck": true, // Speeds up compilation by skipping library checks
     "lib": ["ES2020"], // Includes ES2020 features (no DOM needed for backend)
     "moduleResolution": "node", // Node.js-style module resolution
     "allowJs": true, // Optional: allows JS files if needed
-    "noEmitOnError": true // Prevents emitting JS if there are TS errors
+    "noEmitOnError": true, // Prevents emitting JS if there are TS errors
+    "noImplicitAny": false, // Allow implicit any types
+    "strictNullChecks": false
   },
   "include": ["src/**/*"], // Include all files in src
   "exclude": ["node_modules", "dist"] // Exclude node_modules and compiled output

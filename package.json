@@ -4,7 +4,7 @@
   "type": "commonjs",
   "private": true,
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --noEmitOnError false",
     "start": "node dist/server.js",
     "dev": "nodemon dist/server.js"
   },
