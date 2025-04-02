@@ -399,23 +399,23 @@ const setupCommentWebhookHandler = async (userId: string) => {
     const { pageId, pageToken } = integration;
     if (!pageId || !pageToken) throw new Error("Missing page ID or token");
 
-    await axios.post(
-      `https://graph.facebook.com/${FB_API_VERSION}/${pageId}/subscribed_apps`,
+    const response = await axios.post(
+      `https://graph.facebook.com/v22.0/${pageId}/subscribed_apps`,
       {
-        subscribed_fields: "comments", // Updated to v22.0
+        subscribed_fields: "instagram_comments", // Correct field for Instagram
       },
       {
         params: { access_token: pageToken },
       }
     );
 
-    console.log(`Successfully subscribed to comments for user ${userId}`);
+    console.log(`Successfully subscribed to Instagram comments for user ${userId}`, response.data);
   } catch (error) {
-    console.error("Error setting up comment webhook handler:", error);
+    // Log the full API response for better debugging
+    console.error("Error setting up comment webhook handler:", error.response?.data || error.message);
     throw error;
   }
 };
-
 export const setupInstagramWebhooks = async (
   userId: string,
   pageId: string,
